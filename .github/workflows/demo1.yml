@@ -1,8 +1,18 @@
 name: Events Demo 1
 on:
   pull_request:
+    branches:
+      - develop # develop branch only
     types:
       - opened
+  push:
+    branches:
+      - main # main branch only
+      - added_events # added_events branch only
+      - 'dev*' # develop, develop-abc
+      - 'feat/**' # feat/new-feature, feat/123, feat/abc
+    paths-ignore:
+      - '.github/workflows/**' # ignore docs folder
   workflow_dispatch:
 jobs:
   deploy:
